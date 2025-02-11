@@ -1,0 +1,10 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+  <g id="icon">
+    <path d="M14.4,15.5H1.6c-0.693,0,-1.1,-0.4,-1.1,-1.1V3.5h15v10.9C15.5,15.1,15.093,15.5,14.4,15.5z" fill-rule="evenodd" fill="#FFFFFF" stroke="#797979" stroke-width="1" stroke-miterlimit="10"/>
+    <path d="M14.86,1H1.14C0.414,1,0,1.395,0,2.1v1.9h16V2.1C16,1.395,15.586,1,14.86,1zM10,3H9V2h1V3zM12,3h-1V2h1V3zM14,3h-1V2h1V3z" fill="#217346"/>
+    <path d="M14,3h-1V2h1V3zM12,2h-1v1h1V2zM10,2H9v1h1V2z" fill="#FFFFFF"/>
+    <path d="M15,4v2H1V4H15zM1,14.3c0,0.387,0.313,0.7,0.7,0.7h3.3V7H1V14.3z" fill-rule="evenodd" fill="#F1F0F0"/>
+    <path d="M15,6v1H6v8H5V7H1V6H15z" fill="#B3B3B3"/>
+    <path d="M7.5,9h6V8H7.5V9zM7.5,11h6v-1H7.5V11zM11,14h3v-2h-3V14z" fill="#797979"/>
+  </g>
+</svg>

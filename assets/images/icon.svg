@@ -1,0 +1,15 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+  <g id="icon">
+    <path d="M30,29.5H2c-0.276,0,-0.5,-0.224,-0.5,-0.5V7.5h29v21.5C30.5,29.276,30.276,29.5,30,29.5z" fill="#FFFFFF" stroke="#797979" stroke-width="1" stroke-miterlimit="10"/>
+    <path d="M29.6,2H2.4c-0.773,0,-1.4,0.627,-1.4,1.4v4.6h30V3.4C31,2.627,30.373,2,29.6,2zM20,6h-2V4h2V6zM24,6h-2V4h2V6zM28,6h-2V4h2V6z" fill="#217346"/>
+    <path d="M28,6h-2V4h2V6zM24,4h-2v2h2V4zM20,4h-2v2h2V4z" fill="#FFFFFF"/>
+    <path d="M30,8v4H2V8H30zM2,29h8V13H2V29z" fill-rule="evenodd" fill="#F1F0F0"/>
+    <path d="M3,9h3v2H3V9zM7,11h3V9H7V11zM11,11h3V9h-3V11zM15,9v2h3V9H15z" fill-rule="evenodd" fill="#797979"/>
+    <path d="M30,12v1H11v16h-1V13H2v-1H30z" fill="#B3B3B3"/>
+    <rect x="14" y="15" width="13" height="1" fill="#797979"/>
+    <rect x="14" y="17" width="13" height="1" fill="#797979"/>
+    <rect x="14" y="19" width="13" height="1" fill="#797979"/>
+    <rect x="14" y="21" width="13" height="1" fill="#797979"/>
+    <rect x="22" y="25" width="5" height="2" fill="#797979"/>
+  </g>
+</svg>
