@@ -1,0 +1,38 @@
+<?php
+/**
+ * Виджет вкладки "Помощь" (английской (британской) локализации).
+ * 
+ * Этот файл является частью модуля "Рабочее пространство".
+ * 
+ * @copyright Copyright (c) 2015 Веб-студия GearMagic
+ * @license https://gearmagic.ru/license/
+ * 
+ * @var bool $empty
+ * @var array $help
+ */
+?>
+<div class="g-bs-tab__header">Help</div>
+<div class="g-bs-tab__set">
+<?php if ($empty) : ?>
+    <div class="g-bs-tab__title">No data to show.</div>
+</div>
+<?php return; endif ?>
+<?php if (empty($help)) : ?>
+    <div class="g-bs-tab__title">No help topics.</div>
+</div>
+<?php return; endif ?>
+    <div class="g-bs-tab__title">Choose one of the help topics:</div>
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <div class="g-bs-thumb g-bs-thumb_icon">
+                <div class="g-bs-button g-icon-svg g-icon_manual" role="widget" data-role="<?= Gm::alias('@backend', '/guide') ?>">View</div>
+                <div class="g-bs-thumb__wrap">
+                    <div class="g-bs-thumb__header">User guide</div>
+                    <div class="g-bs-thumb__body">
+                        <p><label>Last update:</label> <?= Gm::$app->formatter->toDate(time()) ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

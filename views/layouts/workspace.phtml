@@ -1,0 +1,142 @@
+<?php
+/**
+ * Макет страницы.
+ * 
+ * Этот файл является частью модуля "Рабочее пространство".
+ * 
+ * @copyright Copyright (c) 2015 Веб-студия GearMagic
+ * @license https://gearmagic.ru/license/
+ * 
+ * @var \Gm\View\View $this
+ * @var string $name
+ * @var bool $rtl
+ * @var bool includeCSS
+ * @var bool hasOverrides
+ * @var \Gm\Version\Version $version
+ */
+
+use Gm\Helper\Url;
+use Gm\Helper\Str;
+use Gm\Backend\Workspace\Widget\Bootslide;
+
+$this->registerAsset('workspace');
+?>
+<!DOCTYPE HTML>
+<html lang="<?= $this->getLang() ?>">
+<head>
+<meta charset="<?= $this->getCharset() ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        Gm = {
+            settings : {
+                name: '<?= $name ?>',
+                title: '<?= Gm::$app->page->titlePattern ?>',
+                versionName: '<?= Gm::$app->version->code ?>',
+                debug: <?= Str::boolToStr(GM_MODE_DEV) ?>,
+                mode: '<?= GM_MODE ?>',
+                path: '<?= Url::toPublished('/vendors/gm/panel') ?>',
+                workspace: {
+                    route: '@backend/workspace',
+                    url: '<?= Url::toMatch() ?>'
+                },
+                theme: {
+                    name: '<?= Gm::$app->theme->name ?>',
+                    path: '<?= Gm::$app->theme->url ?>',
+                    backendPath: '<?= Gm::$app->theme->url ?>/ext',
+                    includeCSS: <?= Str::boolToStr($includeCSS) ?>,
+                    hasOverrides: <?= Str::boolToStr($hasOverrides) ?>
+                },
+                locale: {
+                    language: '<?= $locale['language'] ?>',
+                    path: '<?= $locale['path'] ?>',
+                    isDefault: <?= $locale['isDefault'] ?>,
+                    isPosPrefix: <?= $locale['isPosPrefix'] ?>,
+                    isPosSuffix: <?= $locale['isPosSuffix'] ?>,
+                    slugParam: '<?= $locale['slugParam'] ?>',
+                    rtl: <?= Str::boolToStr($rtl) ?>
+                },
+                urlManager: {
+                    baseUrl: '<?= BASE_URL ? '/' . trim(BASE_URL, '/') . '/' : '' ?>',
+                    enablePrettyUrl: <?= Str::boolToStr(Gm::$app->urlManager->enablePrettyUrl) ?>,
+                    showScriptName: <?= Str::boolToStr(Gm::$app->urlManager->showScriptName) ?>,
+                    enableTrailingSlash: <?= Str::boolToStr(Gm::$app->urlManager->enableTrailingSlash) ?>,
+                    scriptName: '<?= Url::scriptName() ?>',
+                    hashParam: '<?= Gm::$app->request->hashParam ?>',
+                    routeParam: '<?= Gm::$app->urlManager->routeParam ?>',
+                    browserHistory: <?= Str::boolToStr(Gm::$app->urlManager->browserHistory) ?>,
+                    aliases: {
+                        '@backend': '<?= Gm::alias('@backend') ?>'
+                    }
+                },
+                editorShortcodes: <?= $editorShortcodes ?>,
+                report: true,
+                panel: {
+                    navigator: <?= $navigator ?>,
+                    traybar: <?= $traybar ?>,
+                    partitionbar: <?= $partitionbar ?>,
+                    menu: <?= $menu ?>
+                },
+                request: {
+                    headers: {
+                        'X-Gjax': true,
+                        '<?= Gm::$app->request->csrfHeaderName, "': '", Gm::$app->request->getCsrfToken() ?>'
+                    }
+                },
+                autorun: {
+                    routes: [<?= $autorunRoutes ?? '' ?>],
+                    waiting: 2000
+                },
+                classPath: [
+                    ['Ext.ux', '<?= Url::toPublished('/vendors/gm/panel/ext/ux') ?>']
+                ]
+            }
+        }
+    </script>
+    <?php $this->head() ?>
+</head>
+
+<body id="body">
+    <?php $this->beginBody() ?>
+    <?= Bootslide::widget() ?>
+    <div id="g-bootstrap-mask" class="g-bs-mask">
+        <div class="g-bs-mask__wrap">
+            <div class="g-bs-mask__logo"><?= Gm::$app->version->code ?><span class="copyright">&copy;</span></div>
+            <div class="g-bs-mask__loader"></div>
+        </div>
+    </div>
+
+    <div id="g-signout" class="g-signout g-signout_background">
+        <div class="g-signout__inner">
+            <div class="g-signout__title"><?= Gm::$app->version->code ?><span class="g-signout__title-cr">&copy;</span></div>
+            <div class="g-signout__body">
+                <span id="g-signout-exit" class="g-signout__btn g-signout__btn-exit">
+                    <span><?= $translate('Logout') ?></span>
+                </span>
+                <span id="g-signout-account" class="g-signout__btn g-signout__btn-account" role="widget" data-role="<?= Gm::alias('@backend', '/users/me') ?>">
+                    <span><?= $translate('Account') ?></span>
+                </span>
+                <span id="g-signout-back" class="g-signout__btn g-signout__btn-back">
+                    <span><?= $translate('Back') ?></span>
+                </span>
+
+                <!--
+                <a id="g-signout-turnoff" class="g-signout__btn g-icon-svg g-icon_signout-exit" href="#">
+                    <span><?= $translate('Logout') ?></span>
+                </a>
+                <a id="g-signout-account" class="icon icon-account" href="#" role="widget" data-role="<?= Gm::alias('@backend', '/users/me') ?>"><span><?= $translate('Account') ?></span></a>
+                <a id="g-signout-back" class="icon icon-back" href="#"><span><?= $translate('Back') ?></span></a>
+                -->
+            </div>
+        </div>
+    </div>
+    <div id="g-message-mask" class="g-message-mask">
+        <div class="g-message-wrap">
+            <div class="g-message-text"></div>
+        </div>
+    </div>
+    <div id="g-popup"></div>
+    <?php $this->endBody() ?>
+</body>
+
+</html>

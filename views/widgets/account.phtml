@@ -1,0 +1,70 @@
+<?php
+/**
+ * Виджет вкладки "Аккаунт" (английской (британской) локализации).
+ * 
+ * Этот файл является частью модуля "Рабочее пространство".
+ * 
+ * @copyright Copyright (c) 2015 Веб-студия GearMagic
+ * @license https://gearmagic.ru/license/
+ * 
+ * @var bool $empty
+ * @var string username
+ * @var string userId
+ * @var string roles
+ * @var string name
+ * @var object picture
+ * @var int gender
+ * @var string dateOfBirth
+ * @var string phone
+ * @var string email
+ * @var bool contactExists
+ */
+?>
+<div class="g-bs-tab__header">Account</div>
+<?php if ($empty): ?>
+<div class="g-bs-tab__set">
+    <div class="g-bs-tab__title">No data to show.</div>
+</div>
+<?php return; endif; ?>
+<table>
+    <tr>
+        <td valign="top">
+<?php if (!$picture->isDefault()): ?>
+            <div class="g-bs-photo">
+                <img class="g-bs-photo_radius" src="<?= $picture->getUrl() ?>" />
+            </div>
+<? else: ?>
+            <div class="g-bs-photo g-bs-photo_radius g-icon-svg g-icon_<?= $picture->getSource()['name'] ?> g-bs-photo--is-none" >
+            </div>
+<? endif ?>
+            <div>
+                <div class="g-bs-button g-icon-svg g-icon_user-account" role="widget" data-role="<?= Gm::alias('@backend', '/users/me') ?>">Change account</div>
+            </div>
+            <br />
+            <div>
+                <div class="g-bs-button g-icon-svg g-icon_user-profile" role="widget" data-role="<?= Gm::alias('@backend', '/users/profile/view/' . $profileId) ?>">Personal information</div>
+            </div>
+        </td>
+        <td valign="top">
+            <div class="g-bs-tab__set">
+                <div class="g-bs-tab__title">Username: <span><?= $name ?> (<?= $username ?>)</span></div>
+                <div class="g-bs-tab__title">User role: <span> <?= $roles ?></span></div>
+                <?php if ($dateOfBirth) : ?>
+                <p><label>Date of birth:</label> <?= $dateOfBirth ? Gm::$app->formatter->toDate($dateOfBirth) : '' ?></p>
+                <?php endif ?>
+                <p><label>Gender:</label> <?= $gender ? 'male' : 'female' ?></p>
+            </div>
+            <div class="g-bs-tab__set">
+                <?php if ($contactExists) : ?>
+                <div class="g-bs-tab__title">Contacts</div>
+                <?php endif ?>
+                <?php if ($phone) : ?>
+                <p><label>Phone:</label> <a href="tel:+<?= $phone ?>"><?= $phone ?></a></p>
+                <?php endif ?>
+                <?php if ($email) : ?>
+                <p><label>E-mail:</label> <a href="mailto:<?= $email ?>"><?= $email ?></a></p>
+                <?php endif ?>
+            </div>
+        </td>
+    </tr>
+</table>

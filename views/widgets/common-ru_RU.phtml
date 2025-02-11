@@ -1,0 +1,34 @@
+<?php
+/**
+ * Виджет вкладки "Общие сведения" (русской локализации).
+ * 
+ * Этот файл является частью модуля "Рабочее пространство".
+ * 
+ * @copyright Copyright (c) 2015 Веб-студия GearMagic
+ * @license https://gearmagic.ru/license/
+ * 
+ * @var bool $empty
+ * @var string profileName
+ * @var string username
+ * @var string visitedDate
+ * @var string browser
+ * @var string os
+ * @var string ipAddress
+ * @var string roles
+ */
+
+?>
+<div class="g-bs-tab__header">Общие сведения</div>
+<div class="g-bs-tab__set">
+<?php if ($empty) : ?>
+    <div class="g-bs-tab__title">Нет данных для отображения.</div>
+</div>
+<?php return; endif; ?>
+    <div class="g-bs-tab__title">Вы авторизовались как: <span><?= $profileName ?></span></div>
+    <p><label>Дата авторизации:</label> <?= $visitedDate ?></p>
+    <p><label>Браузер:</label> <?= $browser ?></p>
+    <p><label>Операциооная система:</label> <?= $os ?></p>
+    <p><label>IP адрес:</label> <?= $ipAddress ?></p>
+    <p><label>Имя пользователя:</label> <?= $username ?></p>
+    <p><label>Роль пользователя:</label> <?= $roles ?></p>
+</div>

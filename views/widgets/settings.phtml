@@ -1,0 +1,73 @@
+<?php
+/**
+ * Виджет вкладки "Конфигурация" (английской (британской) локализации).
+ * 
+ * Этот файл является частью модуля "Рабочее пространство".
+ * 
+ * @copyright Copyright (c) 2015 Веб-студия GearMagic
+ * @license https://gearmagic.ru/license/
+ * 
+ * @var bool $empty
+ * @var array $items
+ */
+?>
+<div class="g-bs-tab__header">Configuration</div>
+<div class="g-bs-tab__set">
+<?php if ($empty) : ?>
+    <div class="g-bs-tab__title">No data to display.</div>
+</div>
+<?php return; endif ?>
+<?php if (empty($items)) : ?>
+    <div class="g-bs-tab__title">There are no configuration sections for you.</div>
+</div>
+<?php return; endif ?>
+    <div class="g-bs-tab__title">Choose one of the configuration sections:</div>
+<?php
+foreach($items as $partition) : 
+    if ($partition['items']) :
+?>
+<div class="g-bs-tab__subtitle">
+<? if ($partition['title']) :
+    echo '<span>', mb_substr($partition['title'], 0, 1) . '</span>' . mb_substr($partition['title'], 1);
+endif ?></div>
+<div class="row row-padding">
+<?php foreach ($partition['items'] as $module) : 
+        $route   = $module['route'] ?? $module['handlerArgs']['route'];
+        $icon    = $module['icon'];
+        $purpose = $module['purpose'] ?? 'module';
+        $tag     = '';
+        switch ($purpose) {
+            case 'module' :
+                $purpose = 'Module';
+                break;
+            case 'moduleSettings' :
+                $purpose = 'Configure Module';
+                $tag     = ($module['use'] ?? BACKEND) == BACKEND ? 'Control panel' : 'Site';
+                break;
+            case 'configuration' :
+                $purpose = 'Configure Service';
+                break;
+        }
+?>
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <div class="g-bs-thumb g-bs-thumb_icon">
+                <div class="g-bs-button g-icon-svg" style="background-image: url(<?= $icon ?>);" role="widget" data-role="<?= $route ?>"><?= $purpose ?></div>
+                <div class="g-bs-thumb__wrap">
+                    <div class="g-bs-thumb__header"><?= $module['text'] ?></div>
+                    <?php if ($tag) : ?>
+                    <span class="g-bs-thumb__tag"><?= $tag ?></span>
+                    <?php endif ?>
+                    <div class="g-bs-thumb__body">
+                        <p><?= $module['description'] ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+<? endforeach ?>
+</div>
+<?php
+    endif;
+endforeach;
+?>
+    </div>
+</div>
