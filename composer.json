@@ -1,13 +1,7 @@
 {
     "name": "gearmagicru/gm-be-workspace",
-    "description": "Control panel module \"Workspace\"",
-    "keywords": [
-        "gm",
-        "gearmagic",
-        "GM Panel",
-        "module",
-        "workspace"
-    ],
+    "description": "Control Panel module \"Workspace\"",
+    "keywords": ["gearmagic", "gm-panel", "gm-component", "gm-module", "module", "workspace"],
     "homepage": "https://apps.gearmagic.ru/component/gm-be-workspace",
     "type": "component",
     "license": "MIT",
