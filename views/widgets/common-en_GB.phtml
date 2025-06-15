@@ -15,6 +15,7 @@
  * @var string os
  * @var string ipAddress
  * @var string roles
+ * @var array site
  */
 
 ?>
@@ -31,4 +32,15 @@
     <p><label>IP address:</label> <?= $ipAddress ?></p>
     <p><label>Username:</label> <?= $username ?></p>
     <p><label>User role:</label> <?= $roles ?></p>
+    <p>&nbsp;</p>
+    <div class="g-bs-tab__title">Site <span><?= GM_MULTISITE ? '(mode «Multisite»)' : '' ?></span></div>
+<?php if (GM_MULTISITE && GM_MODE_DEV): ?>
+    <p><label>Identifier:</label> <?= $site['id'] ?></p>
+    <p><label>Data Identifier:</label> <?= $site['dataId'] ?></p>
+<?php endif ?>
+    <p><label>Domain:</label> <a target="_blank" href="https://<?= $site['domain'] ?>"><?= $site['domain'] ?></a></p>
+    <p><label>Name:</label> <?= $site['title'] ?></p>
+    <p><label>Description:</label> <?= $site['description'] ?></p>
+    <p><label>Indexing:</label> <?= $site['robots'] ?: '[ not specified ]' ?></p>
+    <p><label>Status:</label> <?= $site['active'] ? 'active' : 'not active' ?></p>
 </div>
