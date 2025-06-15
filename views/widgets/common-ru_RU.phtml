@@ -15,6 +15,7 @@
  * @var string os
  * @var string ipAddress
  * @var string roles
+ * @var array site
  */
 
 ?>
@@ -31,4 +32,15 @@
     <p><label>IP адрес:</label> <?= $ipAddress ?></p>
     <p><label>Имя пользователя:</label> <?= $username ?></p>
     <p><label>Роль пользователя:</label> <?= $roles ?></p>
+    <p>&nbsp;</p>
+    <div class="g-bs-tab__title">Сайт <span><?= GM_MULTISITE ? '(режим «Мультисайт»)' : '' ?></span></div>
+<?php if (GM_MULTISITE && GM_MODE_DEV): ?>
+    <p><label>Идентификатор:</label> <?= $site['id'] ?></p>
+    <p><label>Идентификатор данных:</label> <?= $site['dataId'] ?></p>
+<?php endif ?>
+    <p><label>Домен:</label> <a target="_blank" href="https://<?= $site['domain'] ?>"><?= $site['domain'] ?></a></p>
+    <p><label>Название:</label> <?= $site['title'] ?></p>
+    <p><label>Описание:</label> <?= $site['description'] ?></p>
+    <p><label>Индексация:</label> <?= $site['robots'] ?: '[ не указана ]' ?></p>
+    <p><label>Состояние:</label> <?= $site['active'] ? 'активный' : 'не активный' ?></p>
 </div>
