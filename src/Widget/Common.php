@@ -80,6 +80,35 @@ class Common extends Widget
             $name = implode(' ', $name);
         }
 
+        // информация о сайте
+        $siteMeta = [
+            'domain'      => $_SERVER['SERVER_NAME'],
+            'id'          => '',
+            'dataId'      => '',
+            'title'       => '',
+            'description' => '',
+            'robots'      => '',
+            'active'      => false
+        ];
+        if (GM_MULTISITE && Gm::$services->isRegistered('multiSite')) {
+            /** @var array|null $site */
+            $site = Gm::$app->multiSite->getByDomain();
+            if ($site) {
+                $meta = Gm::$app->multiSite->getDefaultSiteMeta($site['id']);
+                if ($meta) {
+                    $siteMeta = array_merge($siteMeta, $meta);
+                    $siteMeta['id']     = $site['id'];
+                    $siteMeta['dataId'] = $site['dataId'];
+                    $siteMeta['active'] = $site['active'];
+                }
+            }
+        } else {
+            $meta = Gm::$app->page->getDefaultMeta();
+            if ($meta)
+                $siteMeta = array_merge($siteMeta, $meta);
+                $siteMeta['active'] = Gm::$app->page->active;
+        }
+
         return [
             'profileName' => $name,
             'username'    => $identity->getUsername(),
@@ -87,7 +116,8 @@ class Common extends Widget
             'browser'     => Browser::browserName(),
             'os'          => Browser::platformName(),
             'ipAddress'   => Gm::$app->request->getUserIp(),
-            'roles'       => implode(', ', $roles)
+            'roles'       => implode(', ', $roles),
+            'site'        => $siteMeta
         ];
     }
 }
